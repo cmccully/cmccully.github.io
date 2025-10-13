@@ -16,7 +16,7 @@ particlesJS("particles-js", {
       size: {
         value: 3,
         random: true,
-        anim: { enable: false, speed: 18.0, size_min: 0.1, sync: false }
+        anim: { enable: false, speed: 10.0, size_min: 0.1, sync: false }
       },
       line_linked: {
         enable: true,
