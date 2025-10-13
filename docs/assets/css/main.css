@@ -11,26 +11,208 @@ canvas {
 
 /* ---- particles.js container ---- */
 #particles-js {
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    z-index: 1;
     background-color: #1a222c;
     background-image: url("");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
+    pointer-events: auto;
 }
 
-#mccully-pic {
+/* Container for profile card and logo */
+.profile-container {
+    position: relative;
+    margin: 3rem auto 2rem auto;
+    max-width: 100vw;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.profile-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    /* White background with 10% opacity */
+    backdrop-filter: blur(10px);
+    /* This creates the "frosted glass" effect */
+    -webkit-backdrop-filter: blur(10px);
+    /* For Safari compatibility */
+    border-radius: 15px;
+    /* Rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Subtle white border */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    /* Soft shadow for depth */
+    padding: 2rem;
+    /* Internal padding around the content inside the card */
+    max-width: 600px;
+    /* Prevents the card from getting too wide on large screens */
+    text-align: center;
+    /* Centers the text and image inside the card */
+    color: #fff;
+    /* Set text color to white, assuming a dark background */
+    margin: 0 auto;
+    /* Center horizontally within container */
+    position: relative;
+    pointer-events: none;
+    /* Make the card click-through */
+}
+
+.profile-picture {
+    width: 150px;
+    /* Set the size of your picture */
+    height: 150px;
+    border-radius: 50%;
+    /* Makes the image a perfect circle */
+    object-fit: cover;
+    /* Prevents the image from being distorted */
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    /* A slightly more visible border for the picture */
+    margin-bottom: 1.5rem;
+    /* Adds space between the picture and the text below it */
+}
+
+.card-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.research-card {
+    background-color: #343a40;
+    /* Slightly lighter card background */
+    border: 1px solid #495057;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.research-card:hover {
+    transform: translateY(-5px);
+    /* Lift card on hover */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* ...existing code... */
+
+/* Ensure content appears above particles */
+.container, .profile-section {
+    position: relative;
+    z-index: 10;
+}
+
+/* Research container with disabled pointer events */
+.research-container {
+    pointer-events: none;
+}
+
+/* Larger fonts for navigation bar */
+.navbar {
+    z-index: 1000 !important; /* Ensure navbar appears above particles */
+}
+
+.navbar-brand {
+    font-size: 1.5rem !important; /* Increase brand font size */
+}
+
+.navbar-nav .nav-link {
+    font-size: 1.2rem !important; /* Increase nav link font size */
+}
+
+/* Make sure research cards and their interactions work properly */
+.research-card {
+    background-color: #343a40;
+    border: 1px solid #495057;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    position: relative;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.container, .profile-section {
+    position: relative;
+    z-index: 10;
+}
+
+/* The main container for positioning */
+.citation-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* The tooltip bubble */
+.citation-tooltip .tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+
+    /* Appearance of the bubble */
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+
+    /* Positioning */
     position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 10%;
-    background-color: #1a222c;
-    background-image: url("");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 50%;
+    z-index: 10;
+    bottom: 80%;
+    /* Lowered the tooltip to close the gap */
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* Add pointer-events for robustness */
+    pointer-events: none;
+    /* The bubble is not interactive by default */
+
+    /* Smooth fade-in effect */
+    transition: opacity 0.3s ease;
+}
+
+/* Styling the link INSIDE the tooltip (updated) */
+.citation-tooltip .tooltip-text a {
+    color: #fff;
+    text-decoration: underline;
+    pointer-events: auto;
+    /* IMPORTANT: Makes the link clickable */
+}
+
+/* Show the tooltip on hover */
+.citation-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    /* The bubble becomes interactive when visible */
+}
+
+/* Bottom right logo - positioned relative to profile container */
+.bottom-right-logo {
+    position: absolute;
+    top: 100%;   /* Position top of logo right at bottom of card */
+    right: 20px; /* Position to the right within the container */
+    margin-top: 10px; /* Small gap between card and logo */
+    max-width: 300px;  /* Larger logo */
+    max-height: 120px; /* Larger logo */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.bottom-right-logo:hover {
+    opacity: 1;
+}
+
+.bottom-right-logo img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
