@@ -28,16 +28,23 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                            <a class="nav-link {% if page.url == '/' or page.url == '/index.html' %}active{% endif %}" 
+                               {% if page.url == '/' or page.url == '/index.html' %}aria-current="page"{% endif %} 
+                               href="index.html">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="research.html">Research</a>
+                            <a class="nav-link {% if page.url contains 'research' %}active{% endif %}" 
+                               {% if page.url contains 'research' %}aria-current="page"{% endif %} 
+                               href="research.html">Research</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="resume.pdf">CV</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/publications.pdf">Publications</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://scholar.google.com/citations?hl=en&user=vB95YhwAAAAJ">Scholar</a>
                         </li>
                     </ul>
                 </div>
